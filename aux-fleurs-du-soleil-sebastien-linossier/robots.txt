@@ -1,3 +1,0 @@
-# Maquette de démonstration : non indexable tant que le site n'est pas officiellement publié.
-User-agent: *
-Disallow: /

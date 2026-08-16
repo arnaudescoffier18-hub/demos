@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /
-
-# Maquette de démonstration : passer à "Allow: /" lors de la mise en production publique.

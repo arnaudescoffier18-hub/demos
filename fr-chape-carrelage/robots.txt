@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Version de démonstration : retirer le noindex et autoriser l'indexation lors de la mise en production.

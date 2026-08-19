@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.piscines-techni-services.fr/sitemap.xml

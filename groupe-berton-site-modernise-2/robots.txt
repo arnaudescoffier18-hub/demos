@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://entreprise-de-demenagement.fr/sitemap.xml

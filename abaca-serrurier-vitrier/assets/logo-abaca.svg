@@ -1,0 +1,19 @@
+<svg width="330" height="72" viewBox="0 0 330 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Abaca Serrurier Vitrier</title>
+  <desc id="desc">Logo bleu et blanc Abaca Artisans Associés Serrurier Vitrier</desc>
+  <rect width="330" height="72" rx="10" fill="#ffffff"/>
+  <rect x="4" y="4" width="46" height="64" rx="7" fill="#103f76"/>
+  <g fill="#fff" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" text-anchor="middle">
+    <text x="27" y="15">A</text><text x="27" y="27">B</text><text x="27" y="39">A</text><text x="27" y="51">C</text><text x="27" y="63">A</text>
+  </g>
+  <rect x="56" y="7" width="132" height="25" rx="5" fill="#1e5da2"/>
+  <rect x="194" y="7" width="129" height="25" rx="5" fill="#103f76"/>
+  <rect x="56" y="39" width="132" height="25" rx="5" fill="#eef4fb" stroke="#cad8e8"/>
+  <rect x="194" y="39" width="129" height="25" rx="5" fill="#eef4fb" stroke="#cad8e8"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16">
+    <text x="122" y="25" text-anchor="middle" fill="#fff">Artisans</text>
+    <text x="258" y="25" text-anchor="middle" fill="#fff">Serrurier</text>
+    <text x="122" y="57" text-anchor="middle" fill="#103f76">Associés</text>
+    <text x="258" y="57" text-anchor="middle" fill="#103f76">Vitrier</text>
+  </g>
+</svg>

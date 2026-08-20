@@ -1,0 +1,17 @@
+(() => {
+  const header=document.querySelector('.site-header');
+  const toggle=document.querySelector('.menu-toggle');
+  const links=document.querySelector('.nav-links');
+  let lastY=0;
+  const onScroll=()=>{const y=window.scrollY;header?.classList.toggle('scrolled',y>15);if(window.innerWidth<=640&&y>120){header?.classList.toggle('hidden-mobile',y>lastY&&y-lastY>4)}else header?.classList.remove('hidden-mobile');lastY=y};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  toggle?.addEventListener('click',()=>{const open=toggle.classList.toggle('active');toggle.setAttribute('aria-expanded',String(open));links?.classList.toggle('mobile-open',open);header?.classList.toggle('menu-open',open);document.body.style.overflow=open?'hidden':''});
+  document.querySelectorAll('.nav-drop>button').forEach(b=>b.addEventListener('click',()=>{if(window.innerWidth<=980)b.parentElement.classList.toggle('open')}));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{if(window.innerWidth<=980){toggle?.classList.remove('active');links?.classList.remove('mobile-open');header?.classList.remove('menu-open');document.body.style.overflow=''}}));
+  document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>{const item=b.closest('.faq-item'),open=item.classList.toggle('open');b.setAttribute('aria-expanded',String(open))}));
+  if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('motion-ready');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -30px'});document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));}
+  const cursor=document.querySelector('.paint-cursor');if(cursor&&matchMedia('(pointer:fine)').matches){window.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a,button,figure').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('big'));el.addEventListener('mouseleave',()=>cursor.classList.remove('big'))})}
+  const light=document.querySelector('.lightbox'),lightImg=light?.querySelector('img');document.querySelectorAll('[data-lightbox]').forEach(img=>img.addEventListener('click',()=>{if(light&&lightImg){lightImg.src=img.src;lightImg.alt=img.alt;light.classList.add('open');document.body.style.overflow='hidden'}}));light?.querySelector('button')?.addEventListener('click',()=>{light.classList.remove('open');document.body.style.overflow=''});light?.addEventListener('click',e=>{if(e.target===light){light.classList.remove('open');document.body.style.overflow=''}});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&light?.classList.contains('open')){light.classList.remove('open');document.body.style.overflow=''}});
+  // very light parallax on images only
+  if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const hero=document.querySelector('.hero-art,.page-hero-visual');hero?.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hero.querySelectorAll('img').forEach((im,i)=>im.style.transform=`translate(${x*(i?8:13)}px,${y*(i?8:13)}px) rotate(${i?-6:2}deg)`)});hero?.addEventListener('mouseleave',()=>hero.querySelectorAll('img').forEach(im=>im.style.transform=''))}
+})();

@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <script>document.documentElement.className='js';</script>
+  <title>VJL Architecte — Architecture, rénovation & amélioration énergétique</title>
+  <meta name="description" content="VJL Architecte à Saint-Maur-des-Fossés accompagne copropriétés, acteurs publics et tertiaires en conception, rénovation et amélioration énergétique.">
+  <meta name="theme-color" content="#f2f0e9">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.vjl-architecte.fr/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+:root{
+  --ink:#111416;
+  --ink-soft:#20262b;
+  --paper:#f2f0e9;
+  --paper-2:#faf9f5;
+  --white:#fff;
+  --blue:#3158ff;
+  --blue-dark:#1736b7;
+  --stone:#d9d5cb;
+  --muted:#6e726f;
+  --line:rgba(17,20,22,.15);
+  --shadow:0 20px 70px rgba(17,20,22,.14);
+  --radius:18px;
+  --max:1440px;
+  --pad:clamp(18px,4vw,64px);
+  --header-h:82px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{color:inherit}
+::selection{background:var(--blue);color:white}
+:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;top:8px;left:8px;z-index:9999;background:#fff;padding:10px 14px;border:1px solid var(--ink);transform:translateY(-150%)}
+.skip-link:focus{transform:none}
+.site-shell{min-height:100svh}
+.container{width:min(calc(100% - (var(--pad)*2)),var(--max));margin-inline:auto}
+.section{padding:clamp(72px,10vw,150px) 0;position:relative}
+.section-tight{padding:clamp(56px,7vw,100px) 0}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.kicker::before{content:"";width:34px;height:1px;background:currentColor;display:block}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.display{font-family:Iowan Old Style,Palatino Linotype,Book Antiqua,Palatino,Georgia,serif;font-weight:400;letter-spacing:-.045em;line-height:.91;font-size:clamp(3rem,7.6vw,8.8rem);margin:0}
+.display-small{font-family:Iowan Old Style,Palatino Linotype,Book Antiqua,Palatino,Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:.96;font-size:clamp(2.5rem,5.4vw,6rem);margin:0}
+.h2{font-family:Iowan Old Style,Palatino Linotype,Book Antiqua,Palatino,Georgia,serif;font-size:clamp(2.2rem,4.2vw,4.7rem);font-weight:400;line-height:1;letter-spacing:-.035em;margin:0}
+.h3{font-size:clamp(1.3rem,2vw,2rem);line-height:1.1;letter-spacing:-.025em;margin:0}
+.lede{font-size:clamp(1.05rem,1.55vw,1.35rem);line-height:1.6;color:#414743;max-width:740px}
+.muted{color:var(--muted)}
+.link-arrow{display:inline-flex;gap:.75rem;align-items:center;font-weight:700;font-size:.92rem}
+.link-arrow .arrow{transition:transform .25s ease}
+.link-arrow:hover .arrow{transform:translateX(6px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:50px;padding:0 22px;border-radius:999px;border:1px solid var(--ink);font-weight:700;font-size:.9rem;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--blue);border-color:var(--blue)}
+.btn-light{background:#fff;border-color:#fff}
+.btn-light:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-blue{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+.btn-ghost{background:transparent}
+.button-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* Header */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);z-index:1000;width:0;transform-origin:left}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--header-h);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,backdrop-filter .3s ease,border-color .3s ease;border-bottom:1px solid transparent}
+.site-header.is-scrolled{background:rgba(242,240,233,.9);backdrop-filter:blur(16px);border-color:var(--line)}
+.site-header.header-hidden{transform:translateY(-105%)}
+.header-inner{height:100%;display:grid;grid-template-columns:220px 1fr auto;gap:20px;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
+.brand-mark{width:34px;height:34px;border:2px solid currentColor;display:grid;place-items:center;font-size:.72rem;position:relative;overflow:hidden}
+.brand-mark::after{content:"";position:absolute;inset:7px;border:1px solid currentColor;transform:rotate(45deg)}
+.brand small{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:var(--muted)}
+.site-nav{display:flex;justify-content:center;gap:clamp(18px,2.8vw,42px);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.site-nav a{position:relative;padding:8px 0}
+.site-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:1px;background:var(--blue);transition:right .25s ease}
+.site-nav a:hover::after,.site-nav a[aria-current="page"]::after{right:0}
+.header-contact{display:flex;align-items:center;gap:10px}
+.header-phone{font-size:.88rem;font-weight:700;white-space:nowrap}
+.menu-toggle{display:none;border:0;background:transparent;width:46px;height:46px;border-radius:50%;place-items:center;padding:0;cursor:pointer}
+.menu-lines{width:20px;height:14px;position:relative}
+.menu-lines span{position:absolute;left:0;width:100%;height:1px;background:currentColor;transition:.3s ease}
+.menu-lines span:first-child{top:2px}.menu-lines span:last-child{bottom:2px}
+.menu-toggle[aria-expanded="true"] .menu-lines span:first-child{transform:translateY(5px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .menu-lines span:last-child{transform:translateY(-5px) rotate(-45deg)}
+.mobile-panel{position:fixed;inset:0;z-index:850;background:var(--ink);color:#fff;padding:calc(var(--header-h) + 40px) var(--pad) 50px;display:none;overflow:auto}
+.mobile-panel.open{display:block;animation:panelIn .35s ease both}
+@keyframes panelIn{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+.mobile-panel nav{display:grid;gap:8px}
+.mobile-panel nav a{font-family:Iowan Old Style,Georgia,serif;font-size:clamp(2.6rem,12vw,4.6rem);line-height:1;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.mobile-panel-meta{display:grid;gap:10px;margin-top:36px;color:#cfd1ce;font-size:.9rem}
+
+/* Hero */
+.hero{min-height:min(900px,100svh);padding-top:var(--header-h);position:relative;overflow:hidden;background:var(--paper)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(420px,.94fr);min-height:calc(min(900px,100svh) - var(--header-h));align-items:stretch}
+.hero-copy{padding:clamp(54px,7vw,105px) 4vw clamp(52px,6vw,90px) max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3}
+.hero-copy .display{max-width:940px}
+.hero-copy p{max-width:650px;font-size:clamp(1.05rem,1.45vw,1.26rem);color:#414743;margin:28px 0}
+.hero-visual{position:relative;min-height:650px;overflow:hidden;background:#c8c8c3}
+.hero-visual>img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);animation:heroBreath 16s ease-in-out infinite alternate}
+@keyframes heroBreath{to{transform:scale(1.08)}}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,10,12,.48))}
+.hero-index{position:absolute;z-index:2;bottom:28px;left:28px;right:28px;color:white;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.hero-index strong{font-family:Iowan Old Style,Georgia,serif;font-weight:400;font-size:clamp(1.4rem,2.2vw,2.4rem)}
+.hero-index span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.hero-badge{position:absolute;z-index:4;right:clamp(18px,4vw,50px);top:clamp(110px,18vh,190px);width:130px;height:130px;border-radius:50%;background:var(--blue);color:white;display:grid;place-items:center;text-align:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;animation:spinBadge 18s linear infinite;padding:18px}
+.hero-badge b{font-size:1.5rem;letter-spacing:-.03em;display:block}
+@keyframes spinBadge{50%{transform:rotate(4deg) translateY(-8px)}100%{transform:rotate(0)}}
+.blueprint-lines{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.28;background-image:linear-gradient(to right,rgba(17,20,22,.08) 1px,transparent 1px),linear-gradient(to bottom,rgba(17,20,22,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,#000 0 55%,transparent 85%)}
+.hero-trace{position:absolute;left:3%;right:2%;bottom:3%;height:54%;pointer-events:none;opacity:.55}
+.hero-trace path{stroke:var(--blue);stroke-width:1.6;fill:none;stroke-dasharray:8 8;animation:traceMove 11s linear infinite}
+@keyframes traceMove{to{stroke-dashoffset:-160}}
+.hero-social{display:flex;gap:18px;align-items:center;font-size:.9rem;margin-top:10px}
+.rating{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+.stars{letter-spacing:.08em;color:var(--blue)}
+.hero-number{position:absolute;left:calc(100% - 72px);top:60px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* Split hero for interior pages */
+.page-hero{padding-top:var(--header-h);min-height:72svh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--ink);color:#fff}
+.page-hero-copy{padding:clamp(70px,9vw,130px) var(--pad);display:flex;flex-direction:column;justify-content:end;position:relative;z-index:2}
+.page-hero-copy .lede{color:#cbd0cc;margin:24px 0 0}
+.page-hero-media{position:relative;min-height:560px;overflow:hidden}
+.page-hero-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.page-hero:hover .page-hero-media img{transform:scale(1.025)}
+.page-hero-tag{position:absolute;top:28px;left:28px;background:var(--blue);padding:11px 16px;border-radius:999px;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;z-index:2}
+.page-hero-line{position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.8%,rgba(255,255,255,.16) 50%,transparent 50.2%);pointer-events:none}
+
+/* Tickers */
+.ticker{overflow:hidden;border-block:1px solid var(--line);background:var(--paper-2)}
+.ticker-track{display:flex;width:max-content;animation:ticker 34s linear infinite}
+.ticker-item{padding:18px 30px;font-family:Iowan Old Style,Georgia,serif;font-size:clamp(1.25rem,2.2vw,2.1rem);white-space:nowrap}
+.ticker-item::after{content:"✦";font-family:Arial,sans-serif;font-size:.7rem;margin-left:28px;color:var(--blue);vertical-align:middle}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* Intro / architecture cards */
+.intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(38px,8vw,140px);align-items:start}
+.intro-side{position:sticky;top:120px}
+.intro-text p{font-family:Iowan Old Style,Georgia,serif;font-size:clamp(1.8rem,3.4vw,3.9rem);line-height:1.12;letter-spacing:-.03em;margin:0}
+.intro-text p em{color:var(--blue);font-style:normal}
+.intro-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:60px}
+.intro-meta>div{background:var(--paper);padding:24px 20px}
+.intro-meta strong{font-size:clamp(1.8rem,2.8vw,3.2rem);font-family:Iowan Old Style,Georgia,serif;font-weight:400;display:block;line-height:1}
+.intro-meta span{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+
+.service-index{display:grid;border-top:1px solid var(--line)}
+.service-row{display:grid;grid-template-columns:110px 1fr 1.2fr 58px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);transition:background .25s ease,padding .25s ease}
+.service-row:hover{background:rgba(49,88,255,.06);padding-inline:18px}
+.service-num{font-size:.75rem;letter-spacing:.13em;color:var(--muted)}
+.service-row h3{font-family:Iowan Old Style,Georgia,serif;font-size:clamp(1.7rem,2.6vw,3rem);font-weight:400;line-height:1;margin:0}
+.service-row p{margin:0;color:#555c58;max-width:540px}
+.service-arrow{width:48px;height:48px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:background .25s ease,color .25s ease,transform .25s ease}
+.service-row:hover .service-arrow{background:var(--blue);color:#fff;transform:rotate(-12deg)}
+
+/* Project mosaic */
+.dark-section{background:var(--ink);color:#fff}
+.dark-section .muted,.dark-section .lede{color:#b8bdb9}
+.projects-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px}
+.project-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:74px;gap:16px}
+.project-card{position:relative;overflow:hidden;border-radius:2px;background:#303638;cursor:zoom-in}
+.project-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s ease}
+.project-card:hover img{transform:scale(1.055);filter:saturate(.8)}
+.project-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.72));opacity:.8}
+.project-card figcaption{position:absolute;z-index:2;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;gap:16px;align-items:end;color:#fff}
+.project-card figcaption strong{font-size:1.05rem;line-height:1.1}
+.project-card figcaption span{font-size:.68rem;text-transform:uppercase;letter-spacing:.11em;opacity:.8}
+.project-card:nth-child(1){grid-column:span 7;grid-row:span 7}
+.project-card:nth-child(2){grid-column:span 5;grid-row:span 4}
+.project-card:nth-child(3){grid-column:span 5;grid-row:span 6}
+.project-card:nth-child(4){grid-column:span 7;grid-row:span 5}
+.project-card:nth-child(5){grid-column:span 4;grid-row:span 4}
+.project-card:nth-child(6){grid-column:span 8;grid-row:span 5}
+.project-card:nth-child(7){grid-column:span 4;grid-row:span 5}
+.project-card:nth-child(8){grid-column:span 8;grid-row:span 4}
+
+/* Feature split */
+.feature-split{display:grid;grid-template-columns:1.05fr .95fr;min-height:760px}
+.feature-media{position:relative;overflow:hidden;background:#ddd}
+.feature-media img{width:100%;height:100%;object-fit:cover}
+.feature-media .caption{position:absolute;left:20px;bottom:20px;background:rgba(17,20,22,.9);color:#fff;padding:12px 15px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.feature-copy{padding:clamp(50px,7vw,120px);display:flex;flex-direction:column;justify-content:center;background:var(--blue);color:white}
+.feature-copy .kicker{opacity:.86}
+.feature-copy p{font-size:clamp(1.05rem,1.5vw,1.3rem);max-width:620px;color:#eef0ff}
+.feature-list{margin:36px 0 0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.3)}
+.feature-list li{display:flex;justify-content:space-between;gap:30px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3);font-size:.93rem}
+.feature-list b{font-weight:700}
+
+/* Steps */
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{counter-increment:step;background:var(--paper);padding:clamp(28px,3vw,44px);min-height:330px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.step::before{content:"0" counter(step);font-size:.73rem;letter-spacing:.14em;color:var(--muted)}
+.step::after{content:"";position:absolute;width:150px;height:150px;border:1px solid rgba(49,88,255,.25);border-radius:50%;right:-60px;bottom:-60px;transition:transform .5s ease,background .5s ease}
+.step:hover::after{transform:scale(1.7);background:rgba(49,88,255,.05)}
+.step h3{font-family:Iowan Old Style,Georgia,serif;font-size:clamp(1.7rem,2.5vw,2.7rem);font-weight:400;margin:0 0 14px}
+.step ul{padding-left:18px;margin:16px 0 0;color:#4f5652}
+.step li+li{margin-top:8px}
+
+/* Reviews */
+.reviews-wrap{overflow:hidden;position:relative}
+.reviews-track{display:flex;gap:18px;width:max-content;will-change:transform}
+.review-card{width:min(520px,82vw);background:var(--paper-2);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:340px}
+.review-stars{color:var(--blue);letter-spacing:.12em}
+.review-card blockquote{margin:0;font-family:Iowan Old Style,Georgia,serif;font-size:clamp(1.25rem,2vw,1.8rem);line-height:1.35}
+.review-author{display:flex;justify-content:space-between;gap:20px;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+
+/* Stats / decree */
+.deadline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.deadline-card{position:relative;background:var(--ink);color:#fff;padding:clamp(28px,4vw,56px);min-height:320px;overflow:hidden}
+.deadline-card .year{font-family:Iowan Old Style,Georgia,serif;font-size:clamp(3.2rem,5vw,6rem);line-height:1;color:#fff}
+.deadline-card .reduce{font-size:clamp(2rem,4vw,4.5rem);font-weight:800;color:var(--blue);margin-top:30px}
+.deadline-card p{color:#bdc2be;max-width:300px}
+.deadline-card::before{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.deadline-card::after{content:"";position:absolute;right:-10px;top:-10px;width:80px;height:80px;border:1px solid rgba(49,88,255,.7);border-radius:50%;animation:orbit 8s ease-in-out infinite alternate}
+@keyframes orbit{to{transform:translate(-50px,70px) scale(1.4)}}
+
+/* Agency */
+.agency-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,100px);align-items:center}
+.agency-photo{position:relative;overflow:hidden;min-height:620px}
+.agency-photo img{width:100%;height:100%;object-fit:cover}
+.agency-photo::before{content:"VJL";position:absolute;z-index:2;left:-8px;bottom:-38px;font-family:Iowan Old Style,Georgia,serif;font-size:clamp(8rem,18vw,20rem);line-height:.7;color:rgba(255,255,255,.18);letter-spacing:-.09em}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.team-card{background:var(--paper-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.team-photo{aspect-ratio:1 / 1.13;overflow:hidden;background:#deddd8;filter:grayscale(1);transition:filter .35s ease}
+.team-card:hover .team-photo{filter:grayscale(0)}
+.team-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.team-card:hover .team-photo img{transform:scale(1.035)}
+.team-info{padding:18px}
+.team-info strong{display:block;font-size:1rem}
+.team-info span{font-size:.76rem;color:var(--muted)}
+.logo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.logo-card{background:#fff;border:1px solid var(--line);min-height:190px;padding:24px;display:grid;place-items:center}
+.logo-card img{max-width:80%;max-height:115px;object-fit:contain}
+.client-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.client-cloud span{border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:.75rem;background:var(--paper-2)}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:23px 0;display:grid;grid-template-columns:1fr 46px;gap:20px;align-items:center;font-size:clamp(1.08rem,1.7vw,1.35rem);font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq .plus{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;position:relative}
+.faq .plus::before,.faq .plus::after{content:"";position:absolute;width:12px;height:1px;background:var(--ink);transition:transform .25s ease}
+.faq .plus::after{transform:rotate(90deg)}
+.faq details[open] .plus::after{transform:rotate(0)}
+.faq .answer{max-width:860px;color:#515854;padding:0 70px 24px 0}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(32px,7vw,100px);align-items:start}
+.contact-card{background:var(--ink);color:#fff;padding:clamp(30px,5vw,64px);position:relative;overflow:hidden}
+.contact-card::after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:-140px;bottom:-150px}
+.contact-links{display:grid;margin-top:40px;border-top:1px solid rgba(255,255,255,.2)}
+.contact-links a,.contact-links div{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.contact-links small{display:block;color:#aeb4b0;text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;margin-bottom:4px}
+.hours{display:grid;gap:9px;margin-top:28px}
+.hours-row{display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:.88rem}
+.map-wrap{position:relative;min-height:580px;overflow:hidden;border:1px solid var(--line);background:#ddd}
+.map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* Call to action */
+.big-cta{background:var(--blue);color:#fff;overflow:hidden;position:relative}
+.big-cta .container{position:relative;z-index:2}
+.big-cta-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px}
+.big-cta .display-small{max-width:1050px}
+.big-cta-orbit{position:absolute;width:540px;height:540px;border:1px solid rgba(255,255,255,.22);border-radius:50%;right:-120px;top:-180px;animation:ctaFloat 10s ease-in-out infinite alternate}
+.big-cta-orbit::after{content:"";position:absolute;inset:80px;border:1px dashed rgba(255,255,255,.32);border-radius:50%}
+@keyframes ctaFloat{to{transform:translate(-70px,60px) rotate(16deg)}}
+
+/* Footer */
+.site-footer{background:#0d0f10;color:#fff;padding:70px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.1fr .6fr .7fr;gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.13)}
+.footer-brand .brand{font-size:1.2rem;margin-bottom:22px}
+.footer-brand p{max-width:520px;color:#9da39f}
+.footer-nav{display:grid;gap:10px}
+.footer-nav a{color:#c7cbc8;font-size:.9rem}
+.footer-nav a:hover{color:#fff}
+.footer-meta{display:grid;gap:9px;color:#c7cbc8;font-size:.9rem}
+.footer-bottom{display:flex;justify-content:space-between;gap:24px;padding-top:24px;color:#8f9591;font-size:.74rem}
+
+/* Lightbox */
+.lightbox{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%;color:#fff}
+.lightbox::backdrop{background:rgba(5,7,8,.92);backdrop-filter:blur(8px)}
+.lightbox-frame{background:#111;position:relative}
+.lightbox img{max-height:82vh;width:100%;object-fit:contain;background:#111}
+.lightbox-caption{display:flex;justify-content:space-between;gap:20px;padding:15px 4px;color:#d1d5d2;font-size:.8rem}
+.lightbox-close{position:fixed;right:20px;top:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:#111;color:#fff;cursor:pointer}
+
+/* Cursor */
+.cursor-dot{position:fixed;left:0;top:0;width:13px;height:13px;border:1px solid var(--blue);border-radius:50%;pointer-events:none;z-index:2000;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s;mix-blend-mode:multiply;display:none}
+@media (hover:hover) and (pointer:fine){.cursor-dot{display:block}.cursor-dot.active{width:34px;height:34px;background:rgba(49,88,255,.15)}}
+
+/* Reveal enhancement - content remains visible */
+.js .reveal{transform:translateY(12px);transition:transform .75s cubic-bezier(.16,1,.3,1)}
+.js .reveal.is-in{transform:none}
+.js .reveal-scale{transform:scale(.985);transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.js .reveal-scale.is-in{transform:scale(1)}
+
+/* Floating contact */
+.mobile-call{display:none}
+
+/* Legal */
+.prose{max-width:900px}
+.prose h2{font-family:Iowan Old Style,Georgia,serif;font-size:2rem;margin:50px 0 10px;font-weight:400}
+.prose h3{font-size:1.05rem;margin:30px 0 8px}
+.prose p,.prose li{color:#4f5652}
+.prose a{text-decoration:underline}
+
+@media(max-width:1100px){
+  :root{--header-h:74px}
+  .header-inner{grid-template-columns:1fr auto}
+  .site-nav,.header-phone{display:none}
+  .menu-toggle{display:grid}
+  .hero-grid{grid-template-columns:1fr 44%}
+  .hero-number{display:none}
+  .team-grid{grid-template-columns:repeat(3,1fr)}
+  .project-grid{grid-auto-rows:62px}
+  .feature-copy{padding:60px 5vw}
+}
+
+@media(max-width:820px){
+  :root{--pad:20px}
+  .section{padding:78px 0}
+  .hero{min-height:auto}
+  .hero-grid{display:flex;flex-direction:column;min-height:auto}
+  .hero-copy{padding:72px var(--pad) 44px;min-height:620px}
+  .hero-visual{min-height:55svh}
+  .hero-badge{right:20px;top:auto;bottom:20px;width:105px;height:105px}
+  .blueprint-lines{mask-image:none;opacity:.18}
+  .page-hero{grid-template-columns:1fr;min-height:auto}
+  .page-hero-copy{min-height:520px;padding-top:110px}
+  .page-hero-media{min-height:55svh}
+  .intro-grid,.agency-intro,.contact-grid{grid-template-columns:1fr}
+  .intro-side{position:static}
+  .intro-meta{margin-top:42px}
+  .service-row{grid-template-columns:54px 1fr 46px;gap:14px}
+  .service-row p{grid-column:2 / 4;margin-top:-8px}
+  .project-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+  .project-card:nth-child(n){grid-column:span 1;grid-row:span 1}
+  .project-card:nth-child(1),.project-card:nth-child(6){grid-column:span 2}
+  .feature-split{grid-template-columns:1fr;min-height:auto}
+  .feature-media{min-height:56svh}
+  .feature-copy{padding:60px var(--pad)}
+  .steps{grid-template-columns:1fr}
+  .step{min-height:250px}
+  .deadline-grid{grid-template-columns:1fr}
+  .deadline-card{min-height:260px}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .logo-strip{grid-template-columns:1fr}
+  .big-cta-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:34px}
+  .footer-bottom{flex-direction:column}
+  .map-wrap{min-height:430px}
+}
+
+@media(max-width:560px){
+  :root{--pad:16px}
+  body{font-size:15px;padding-bottom:calc(68px + env(safe-area-inset-bottom))}
+  .brand small{display:none}
+  .hero-copy{min-height:560px;padding-top:58px}
+  .hero-copy p{margin:22px 0}
+  .hero-social{align-items:flex-start;flex-direction:column;gap:8px}
+  .display{font-size:clamp(3.5rem,17vw,5.5rem)}
+  .display-small{font-size:clamp(3rem,13vw,4.7rem)}
+  .page-hero-copy{min-height:470px}
+  .intro-meta{grid-template-columns:1fr}
+  .intro-meta>div{display:flex;justify-content:space-between;align-items:end}
+  .service-row{padding:22px 0}
+  .project-grid{display:block}
+  .project-card{height:62vw;min-height:240px;margin-bottom:12px}
+  .project-card:nth-child(3n){height:88vw}
+  .projects-head{align-items:start;flex-direction:column}
+  .team-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .team-info{padding:13px}
+  .team-info span{font-size:.7rem}
+  .review-card{min-height:310px;padding:22px}
+  .contact-card{padding:30px 22px}
+  .hours-row{grid-template-columns:90px 1fr}
+  .mobile-call{display:grid;grid-template-columns:1fr 1fr;position:fixed;z-index:880;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));background:rgba(13,15,16,.96);padding:7px;border-radius:17px;box-shadow:0 12px 40px rgba(0,0,0,.25);backdrop-filter:blur(12px)}
+  .mobile-call a{min-height:48px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.85rem;border-radius:12px}
+  .mobile-call a:first-child{background:var(--blue)}
+  .mobile-call a:last-child{background:#fff;color:var(--ink);margin-left:6px}
+  .footer-bottom{padding-bottom:8px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .hero-visual>img{transform:none!important}
+  .ticker-track{animation:none;transform:none}
+  .cursor-dot{display:none!important}
+}
+
+@media(max-width:1100px){
+  .no-js .site-nav{display:flex;grid-column:1 / -1;overflow:auto;justify-content:flex-start;gap:16px;padding-bottom:8px}
+  .no-js .header-inner{height:auto;padding-top:14px}
+  .no-js .site-header{height:auto;position:relative;background:var(--paper)}
+  .no-js .menu-toggle{display:none}
+  .no-js .hero,.no-js .page-hero{padding-top:0}
+}
+
+/* Contextual header contrast on dark opening heroes */
+.hero-dark .site-header:not(.is-scrolled){color:#fff}
+.hero-dark .site-header:not(.is-scrolled) .brand small{color:#c9ceca}
+.hero-dark .site-header:not(.is-scrolled) .btn-dark{background:#fff;color:var(--ink);border-color:#fff}
+.dark-section .service-row p,.dark-section .service-num{color:#b8bdb9}
+
+@media(max-width:820px){
+  .reviews-wrap{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-inline:var(--pad)}
+  .reviews-wrap::-webkit-scrollbar{display:none}
+  .reviews-track{transform:none!important}
+  .review-card{scroll-snap-align:start}
+}
+.feature-split>*{min-width:0}
+@media(max-width:560px){.feature-list li{gap:10px;flex-wrap:wrap}.feature-list li span{overflow-wrap:anywhere}}
+@media(max-width:560px){.header-contact .btn{display:none}}
+
+</style>
+  <meta property="og:title" content="VJL Architecte — Au service de vos projets">
+  <meta property="og:description" content="Conception, rénovation et amélioration énergétique à Saint-Maur-des-Fossés.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/photo-01.webp">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Architect","name":"VJL Architecte","address":{"@type":"PostalAddress","streetAddress":"2 bis Rue de Paris","postalCode":"94100","addressLocality":"Saint-Maur-des-Fossés","addressCountry":"FR"},"telephone":"+33145148091","email":"contact@vjl-architecte.fr","url":"https://www.vjl-architecte.fr/","aggregateRating":{"@type":"AggregateRating","ratingValue":"3.7","reviewCount":"22"}}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="VJL Architecte — Accueil"><span class="brand-mark">VJL</span><span>VJL Architecte<br><small>Architecture & rénovation</small></span></a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a><a href="copropriete.html">Copropriété</a><a href="public-tertiaire.html">Public / Tertiaire</a><a href="agence.html">L'agence</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-contact"><a class="header-phone" href="tel:+33145148091">01 45 14 80 91</a><a class="btn btn-dark" href="contact.html">Parler d’un projet</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span class="menu-lines"><span></span><span></span></span></button></div>
+  </div>
+</header>
+<div class="mobile-panel" aria-label="Menu mobile">
+  <nav><a href="index.html">Accueil</a><a href="copropriete.html">Copropriété</a><a href="public-tertiaire.html">Public / Tertiaire</a><a href="agence.html">L'agence</a><a href="contact.html">Contact</a></nav>
+  <div class="mobile-panel-meta"><a href="tel:+33145148091">01 45 14 80 91</a><a href="mailto:contact@vjl-architecte.fr">contact@vjl-architecte.fr</a><span>2 bis Rue de Paris · 94100 Saint-Maur-des-Fossés</span></div>
+</div>
+<main id="main">
+  <section class="hero">
+    <div class="blueprint-lines" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">Saint-Maur-des-Fossés · Île-de-France</span>
+        <h1 class="display">Au service<br>de vos <em style="color:var(--blue);font-style:normal">projets.</em></h1>
+        <p>Une équipe pluridisciplinaire dédiée à la conception, à la rénovation et à l’amélioration énergétique, avec une approche qui conjugue qualité architecturale, enjeux techniques, économiques et environnementaux.</p>
+        <div class="button-row"><a class="btn btn-blue" href="contact.html">Nous confier un projet <span>↗</span></a><a class="btn btn-ghost" href="#expertises">Découvrir nos expertises</a></div>
+        <div class="hero-social"><span class="rating"><span class="stars">★★★★☆</span> 3,7 / 5</span><span class="muted">22 avis Google</span></div>
+        <span class="hero-number">VJL / Architecture / Rénovation</span>
+        <svg class="hero-trace" viewBox="0 0 900 390" preserveAspectRatio="none" aria-hidden="true"><path d="M0 340 L120 340 L120 250 L260 250 L260 285 L390 285 L390 160 L520 160 L520 215 L660 215 L660 90 L790 90 L790 330 L900 330"/></svg>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/images/photo-01.webp" alt="Vue aérienne d'un ensemble résidentiel suivi par VJL Architecte" fetchpriority="high">
+        <div class="hero-index"><div><span>Architecture du patrimoine existant</span><br><strong>Concevoir. Rénover. Améliorer.</strong></div><span>01 — 05</span></div>
+        <div class="hero-badge"><div><b>VJL</b>architecture<br>& énergie</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track"><div class="ticker-item">Copropriété</div><div class="ticker-item">Rénovation globale</div><div class="ticker-item">Architecture publique</div><div class="ticker-item">Tertiaire</div><div class="ticker-item">Suivi de travaux</div><div class="ticker-item">Amélioration énergétique</div><div class="ticker-item">Copropriété</div><div class="ticker-item">Rénovation globale</div><div class="ticker-item">Architecture publique</div><div class="ticker-item">Tertiaire</div><div class="ticker-item">Suivi de travaux</div><div class="ticker-item">Amélioration énergétique</div></div></div>
+
+  <section class="section" id="expertises">
+    <div class="container intro-grid">
+      <div class="intro-side reveal"><span class="kicker">Notre approche</span><p class="lede">De l’étude initiale à la réception, une lecture globale du bâtiment et de ses usages.</p></div>
+      <div class="intro-text reveal">
+        <p>Faire évoluer l’existant sans perdre ce qui fait sa valeur. <em>Comprendre le lieu</em>, coordonner les contraintes, puis transformer le projet en une réalisation lisible et durable.</p>
+        <div class="intro-meta"><div><strong>3</strong><span>temps de mission<br>Étude · administratif · travaux</span></div><div><strong>2</strong><span>grands champs<br>Copropriété · Public/Tertiaire</span></div><div><strong>Global</strong><span>lecture du projet<br>architecture · technique · énergie</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="projects-head reveal"><div><span class="kicker">Expertises</span><h2 class="h2">Deux univers,<br>une même exigence.</h2></div><p class="lede">Une intervention structurée autour des besoins réels du maître d’ouvrage, de la faisabilité jusqu’au chantier.</p></div>
+      <div class="service-index reveal">
+        <a class="service-row" href="copropriete.html"><span class="service-num">01</span><h3>Copropriété</h3><p>Rénovation globale du patrimoine existant, ravalement, enveloppe, toiture, parties communes et amélioration énergétique.</p><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="public-tertiaire.html"><span class="service-num">02</span><h3>Public</h3><p>Équipements scolaires, culturels et sportifs, avec attention portée aux usages, au contexte, aux matériaux et à la lumière naturelle.</p><span class="service-arrow">↗</span></a>
+        <a class="service-row" href="public-tertiaire.html"><span class="service-num">03</span><h3>Tertiaire</h3><p>Audit, diagnostic, planification et suivi de travaux pour accompagner les objectifs de performance énergétique du parc tertiaire.</p><span class="service-arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section">
+    <div class="container">
+      <div class="projects-head reveal"><div><span class="kicker">Références</span><h2 class="h2">Des projets ancrés<br>dans leur contexte.</h2></div><a class="link-arrow" href="copropriete.html">Explorer les références <span class="arrow">→</span></a></div>
+      <div class="project-grid">
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-09.webp" data-title="Patrimoine résidentiel" data-alt="Vue aérienne d'un ensemble résidentiel"><img loading="lazy" src="assets/images/photo-09.webp" alt="Vue aérienne d'un ensemble résidentiel"><figcaption><strong>Patrimoine résidentiel</strong><span>Rénovation</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-07.webp" data-title="Équipement sportif" data-alt="Équipement sportif avec tribune"><img loading="lazy" src="assets/images/photo-07.webp" alt="Équipement sportif avec tribune"><figcaption><strong>Équipement sportif</strong><span>Public</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-04.webp" data-title="Façade patrimoniale" data-alt="Façade d'un immeuble parisien"><img loading="lazy" src="assets/images/photo-04.webp" alt="Façade d'un immeuble parisien"><figcaption><strong>Façade patrimoniale</strong><span>Ravalement</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-10.webp" data-title="Chantier en copropriété" data-alt="Échafaudage sur une façade en rénovation"><img loading="lazy" src="assets/images/photo-10.webp" alt="Échafaudage sur une façade en rénovation"><figcaption><strong>Chantier en copropriété</strong><span>Suivi</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-08.webp" data-title="Architecture résidentielle" data-alt="Maison à façade claire"><img loading="lazy" src="assets/images/photo-08.webp" alt="Maison à façade claire"><figcaption><strong>Résidentiel</strong><span>Architecture</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-06.webp" data-title="Ensemble urbain" data-alt="Vue aérienne d'un ensemble urbain"><img loading="lazy" src="assets/images/photo-06.webp" alt="Vue aérienne d'un ensemble urbain"><figcaption><strong>Ensemble urbain</strong><span>Patrimoine</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-02.webp" data-title="Résidence rénovée" data-alt="Façade claire d'une résidence"><img loading="lazy" src="assets/images/photo-02.webp" alt="Façade claire d'une résidence"><figcaption><strong>Résidence rénovée</strong><span>Copropriété</span></figcaption></figure>
+        <figure class="project-card reveal-scale" data-full="assets/images/photo-05.webp" data-title="Immeuble collectif" data-alt="Immeuble collectif à balcons"><img loading="lazy" src="assets/images/photo-05.webp" alt="Immeuble collectif à balcons"><figcaption><strong>Immeuble collectif</strong><span>Façade</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-split">
+    <div class="feature-media reveal-scale"><img src="assets/images/agence.webp" alt="Locaux de l'agence VJL Architecte" loading="lazy"><span class="caption">L'agence · Saint-Maur-des-Fossés</span></div>
+    <div class="feature-copy reveal"><span class="kicker">L'agence</span><h2 class="display-small">Une équipe<br>pluridisciplinaire.</h2><p>VJL réunit des profils d’architectes, chefs de projet, fonctions administratives et métrés autour d’une offre globale, complétée par des partenariats avec des bureaux d’études et des acteurs du financement.</p><ul class="feature-list"><li><b>Conception</b><span>architecture & usages</span></li><li><b>Rénovation</b><span>patrimoine existant</span></li><li><b>Énergie</b><span>amélioration de la performance</span></li></ul><div class="button-row" style="margin-top:34px"><a class="btn btn-light" href="agence.html">Découvrir l'équipe</a></div></div>
+  </section>
+
+  <section class="section" aria-labelledby="avis-title">
+    <div class="container projects-head reveal"><div><span class="kicker">Avis Google</span><h2 class="h2" id="avis-title">Des collaborations<br>suivies dans le temps.</h2></div><div><strong style="font-size:2rem">3,7 / 5</strong><br><span class="muted">22 avis Google</span></div></div>
+    <div class="reviews-wrap" data-review-scroll>
+      <div class="reviews-track">
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« Je remercie le cabinet VJL pour la qualité et le sérieux de son accompagnement. Son professionnalisme, sa rigueur et sa capacité à piloter les dossiers avec clarté et efficacité ont toujours permis d’aboutir à des projets conformes à nos attentes… »</blockquote><div class="review-author"><strong>Pierre GRENIER</strong><span>27 janv. 2026</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« VJL a proposé et assuré le suivi du ravalement de notre copropriété située à Saint-Maur des Fossés. Le chantier qui a duré 6 mois s’est très bien passé avec des résultats conformes au projet initial… »</blockquote><div class="review-author"><strong>Corinne</strong><span>6 oct. 2025</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« Le suivi par VJL a été à la hauteur, très sérieux et M Lamarche a répondu directement aux questions posées tant sur les travaux que sur le planning… »</blockquote><div class="review-author"><strong>Gege Fro</strong><span>17 janv. 2024</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« La solidité professionnelle, le perfectionnisme et une grande écoute liée aux qualités humaines ont permis à cette expérience de se dérouler dans la fluidité et la sérénité… »</blockquote><div class="review-author"><strong>geneviève billard</strong><span>23 nov. 2021</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« Je remercie le cabinet VJL pour la qualité et le sérieux de son accompagnement. Son professionnalisme, sa rigueur et sa capacité à piloter les dossiers avec clarté et efficacité ont toujours permis d’aboutir à des projets conformes à nos attentes… »</blockquote><div class="review-author"><strong>Pierre GRENIER</strong><span>27 janv. 2026</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« VJL a proposé et assuré le suivi du ravalement de notre copropriété située à Saint-Maur des Fossés. Le chantier qui a duré 6 mois s’est très bien passé avec des résultats conformes au projet initial… »</blockquote><div class="review-author"><strong>Corinne</strong><span>6 oct. 2025</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« Le suivi par VJL a été à la hauteur, très sérieux et M Lamarche a répondu directement aux questions posées tant sur les travaux que sur le planning… »</blockquote><div class="review-author"><strong>Gege Fro</strong><span>17 janv. 2024</span></div></article>
+        <article class="review-card"><div class="review-stars">★★★★★</div><blockquote>« La solidité professionnelle, le perfectionnisme et une grande écoute liée aux qualités humaines ont permis à cette expérience de se dérouler dans la fluidité et la sérénité… »</blockquote><div class="review-author"><strong>geneviève billard</strong><span>23 nov. 2021</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section big-cta">
+    <div class="big-cta-orbit" aria-hidden="true"></div>
+    <div class="container big-cta-grid"><div><span class="kicker">Votre projet</span><h2 class="display-small">Transformer une intention<br>en projet construit.</h2></div><div class="button-row"><a class="btn btn-light" href="contact.html">Nous contacter <span>↗</span></a></div></div>
+  </section>
+</main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark">VJL</span><span>VJL Architecte</span></a><p>Conception, rénovation et amélioration énergétique du patrimoine existant, des équipements publics et des bâtiments tertiaires.</p></div><nav class="footer-nav" aria-label="Pied de page"><a href="copropriete.html">Copropriété</a><a href="public-tertiaire.html">Public / Tertiaire</a><a href="agence.html">L'agence</a><a href="contact.html">Contact</a><a href="mentions-legales.html">Mentions légales</a></nav><div class="footer-meta"><strong>VJL Architecte</strong><span>2 bis Rue de Paris<br>94100 Saint-Maur-des-Fossés</span><a href="tel:+33145148091">01 45 14 80 91</a><a href="mailto:contact@vjl-architecte.fr">contact@vjl-architecte.fr</a></div></div><div class="footer-bottom"><span>© 2026 VJL Architecte</span><span>Architecture · Rénovation · Énergie</span></div></div></footer>
+<div class="mobile-call"><a href="tel:+33145148091">Appeler</a><a href="contact.html">Contact</a></div>
+<dialog class="lightbox" id="project-lightbox"><button class="lightbox-close" aria-label="Fermer">×</button><div class="lightbox-frame"><img src="" alt=""><div class="lightbox-caption"><strong data-lb-title></strong><span>VJL Architecte</span></div></div></dialog>
+<script>
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header = document.querySelector('.site-header');
+  const progress = document.querySelector('.scroll-progress');
+  const toggle = document.querySelector('.menu-toggle');
+  const panel = document.querySelector('.mobile-panel');
+  let lastY = window.scrollY;
+
+  const closeMenu = () => {
+    if (!toggle || !panel) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('open', !open);
+      document.body.style.overflow = !open ? 'hidden' : '';
+    });
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  }
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
+    if (header) {
+      header.classList.toggle('is-scrolled', y > 24);
+      if (window.innerWidth <= 820 && y > 130 && y > lastY + 4) header.classList.add('header-hidden');
+      else if (y < lastY - 4 || y < 130) header.classList.remove('header-hidden');
+    }
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const revealEls = [...document.querySelectorAll('.reveal, .reveal-scale')];
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.08, rootMargin:'0px 0px -5% 0px'});
+    revealEls.forEach(el => io.observe(el));
+  } else revealEls.forEach(el => el.classList.add('is-in'));
+
+  // Pointer ring on desktop
+  const cursor = document.querySelector('.cursor-dot');
+  if (cursor && matchMedia('(hover:hover) and (pointer:fine)').matches && !reduceMotion) {
+    window.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    }, {passive:true});
+    document.querySelectorAll('a,button,.project-card,summary').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+  }
+
+  // Gentle auto-scroll for reviews; users can still swipe/drag naturally.
+  document.querySelectorAll('[data-review-scroll]').forEach(wrap => {
+    const track = wrap.querySelector('.reviews-track');
+    if (!track || reduceMotion) return;
+    let paused = false;
+    let x = 0;
+    let raf;
+    const loop = () => {
+      if (!paused && window.innerWidth > 760) {
+        x += .32;
+        const half = track.scrollWidth / 2;
+        if (x >= half) x = 0;
+        track.style.transform = `translate3d(${-x}px,0,0)`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    wrap.addEventListener('mouseenter', () => paused = true);
+    wrap.addEventListener('mouseleave', () => paused = false);
+    wrap.addEventListener('touchstart', () => { paused = true; track.style.transform = ''; }, {passive:true});
+    raf = requestAnimationFrame(loop);
+    window.addEventListener('pagehide', () => cancelAnimationFrame(raf), {once:true});
+  });
+
+  // Architectural lightbox (progressive enhancement)
+  const dialog = document.querySelector('#project-lightbox');
+  if (dialog && typeof dialog.showModal === 'function') {
+    const lbImg = dialog.querySelector('img');
+    const lbTitle = dialog.querySelector('[data-lb-title]');
+    document.querySelectorAll('.project-card[data-full]').forEach(card => {
+      card.tabIndex = 0;
+      const open = () => {
+        lbImg.src = card.dataset.full;
+        lbImg.alt = card.dataset.alt || '';
+        lbTitle.textContent = card.dataset.title || '';
+        dialog.showModal();
+      };
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+  }
+
+  // Subtle hero parallax only on precise pointers
+  const heroVisual = document.querySelector('.hero-visual img');
+  if (heroVisual && matchMedia('(hover:hover) and (pointer:fine)').matches && !reduceMotion) {
+    const area = heroVisual.closest('.hero-visual');
+    area.addEventListener('mousemove', e => {
+      const r = area.getBoundingClientRect();
+      const px = (e.clientX-r.left)/r.width - .5;
+      const py = (e.clientY-r.top)/r.height - .5;
+      heroVisual.style.transform = `scale(1.06) translate(${px*-7}px,${py*-7}px)`;
+    });
+    area.addEventListener('mouseleave', () => heroVisual.style.transform = '');
+  }
+})();
+
+</script>
+</body></html>

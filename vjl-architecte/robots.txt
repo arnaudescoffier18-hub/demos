@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.vjl-architecte.fr/sitemap.xml

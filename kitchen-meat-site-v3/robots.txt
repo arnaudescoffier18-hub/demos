@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Maquette de démonstration : retirer le blocage lors de la mise en production.
